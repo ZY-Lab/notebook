@@ -1,0 +1,32 @@
+##React Native运行原理解析
+
+RN需要一个JS的运行环境， 在IOS上直接使用内置的javascriptcore， 在Android 则使用webkit.org官方开源的jsc.so。 此外还集成了其他开源组件，如fresco图片组件，okhttp网络组件等。
+
+####简单概括一下整个渲染流程
+
+1.React Native将代码由JSX转化为JS组件，启动过程中利用instantiateReactComponent将ReactElement转化为复合组件ReactCompositeComponent与元组件ReactNativeBaseComponent，利用 
+ReactReconciler对他们进行渲染。
+
+2.UIManager.js利用C++层的Instance.cpp将UI信息传递给UIManagerModule.java，并利用UIManagerModule.java构建UI。
+
+3.UIManagerModule.java接收到UI信息后，将UI的操作封装成对应的Action，放在队列中等待执行。各种UI的操作，例如创建、销毁、更新等便在队列里完成，UI最终 
+得以渲染在屏幕上。
+
+####具体流程
+在程序启动的时候，首先会调用ReactActivity的onCreate函数中，我们会去创建一个ReactInstanceManagerImpl对象。通过ReactRootView的startReactApplication方法开启整个RN世界的大门。
+
+在这个方法中，我们会通过一个AsyncTask去创建ReactContext
+
+在创建ReactContext中，我们把我们自己注入和CoreModulesPackage通过processPackage方法将其中的各个modules注入到了对应的Registry中。最后通过CatalystInstanceImpl中的ReactBridge将NativeModule和JSModule注册表通过jni传输到了JS层。
+
+java调用js时，会在ReactApplicationContext创建的时候存入注册表类JavaScriptModuleRegistry中，同时通过动态代理生成代理实例，并在代理拦截类JavaScriptModuleInvocationHandler中统一处理发向Javascript的所有通信请求。
+
+JSCExecutor将所有来自Java层的通信请求封装成Javascript执行语句。
+
+接着在js层中的MessageQueue里匹配ModuleId和MethodId。找到调用模块。
+
+如果是js层调用java层，js最终都会调用__nativeCall方法，通过flushedQueue将this._queue返回给Bridger。
+
+C++层调用PlatformBridgeCallback对象的onCallNativeModules方法，执行makeJavaCall方法，里面最终通过env->CallVoidMethod调用了Java层的方法。
+
+调用Java层NativeModulesReactCallback的call方法，通过moduleID从保存在其内部的NativeModule映射表，匹配到需要被执行的NativeModule对象，再通过methodID匹配到所要调用的方法。通过invoke反射方式执行NativeModule的方法。
