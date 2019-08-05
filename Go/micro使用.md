@@ -7,7 +7,9 @@
 > go run  
 
 ### 用micro api订阅
-> micro api  --namespace=go.micro.evt  起一个micro api ，handler默认为api，namespace默认为go.micro.api。Namesapce类似于域名，在访问路径中不写，具体访问路径要看handler类型。
+> micro api  --namespace=go.micro.evt  
+
+起一个micro api ，handler默认为api，namespace默认为go.micro.api。Namesapce类似于域名，在访问路径中不写，具体访问路径要看handler类型。
 
 ### 发送HTTP请求
 > 请求路径按照handler中选择的方式，具体官方文档：https://micro.mu/docs/go-api.html#rpc-handler
