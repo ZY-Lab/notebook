@@ -19,6 +19,7 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 
 + API Handler(默认)
 > Path: /[service]/[method]
+> 与rpc差不多，但是会把完整的http头封装向下传送，不限制请求方法
 
 + Broker Handler
 > Path: /
@@ -28,18 +29,26 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 
 + Event Handler
 > Path: /[topic]/[event]
+> 代理event事件服务类型的请求
 
 + HTTP Handler
 > Path: /[service]
+> 以反向代理的方式使用API，相当于把普通的web应用部署在API之后，让外界像调api接口一样调用web服务
 
 + RPC Handler
 > Path: /[service]/[method]
+> 默认值，通过RPC向go-micro应用转送请求，通常只传送请求body，头信息不封装。只接收POST请求
 
 + Registry Handler
 > Path: /
 
 + Web Handler
 > Path: /[service]
+> 与http差不多，但是支持websocket
+
+### 订阅中消息
+broker.Queue("mu.micro.book.topic.queue") 有无这句话可以控制全部订阅还是一条订阅
+
 ### 常用指令
 ```
 # 安装micro
