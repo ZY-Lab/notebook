@@ -1,5 +1,8 @@
 ## micro操作手册
 
+### 概念理解
+micro在该框架中可作为边车模型，并且可以开发plugins编译进micro中进行二次开发。
+
 ### 在gopath的src中生成一个样例文件
 > micro new example   
 
