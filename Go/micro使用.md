@@ -37,7 +37,7 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 
 + RPC Handler
 > Path: /[service]/[method]
-> 默认值，通过RPC向go-micro应用转送请求，通常只传送请求body，头信息不封装。只接收POST请求
+> 通过RPC向go-micro应用转送请求，通常只传送请求body，头信息不封装。只接收POST请求
 
 + Registry Handler
 > Path: /
