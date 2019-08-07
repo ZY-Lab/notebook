@@ -47,7 +47,11 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 > 与http差不多，但是支持websocket
 
 ### 订阅中消息
-broker.Queue("mu.micro.book.topic.queue") 有无这句话可以控制全部订阅还是一条订阅
+broker.Subscribe(topic, func(p broker.Event) error {
+		// do anything
+	}, broker.Queue("name"))
+  
+broker.Queue("name") 通过句话可以设置要共享消息的队列名称
 
 ### 常用指令
 ```
