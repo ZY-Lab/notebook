@@ -6,8 +6,8 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 ### 在gopath的src中生成一个样例文件
 > micro new example   
 
-### 启动服务
-> go run  
+### 启动micro web页面服务
+> micro --registry=etcdv3 --registry_address=192.168.3.128:2379 web
 
 ### 用micro api订阅
 > micro api  --namespace=go.micro.evt  
