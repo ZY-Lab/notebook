@@ -9,6 +9,9 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 ### 启动micro web页面服务
 > micro --registry=etcdv3 --registry_address=192.168.3.128:2379 web
 
+### 启动micro api服务
+> micro --registry=etcdv3 --registry_address=192.168.3.128:2379 api --handler=web --namespace=com.tradeany.api
+
 ### 用micro api订阅
 > micro api  --namespace=go.micro.evt  
 
