@@ -45,6 +45,7 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 + Web Handler
 > Path: /[service]
 > 与http差不多，但是支持websocket
+> web服务名：namespace+name，gin的路径设置/name/...
 
 ### 订阅
 broker.Subscribe(topic, func(p broker.Event) error {    
