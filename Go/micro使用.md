@@ -50,9 +50,9 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 > web服务名：namespace+name，gin的路径设置/name/...
 
 ```
-  nebula.Web.Init(web.Name("com.tradeany.api.supplier"),)
-  router.POST("/supplier/item", CreateItem)
-  --namespace=com.tradeany.api
+  nebula.Web.Init(web.Name("com.tradeany.api.supplier") //初始化一个web服务，com.tradeany.api是namespace,后面跟项目名如：supplier)
+  router.POST("/supplier/item", CreateItem) //路径名：/namespace/...
+  --namespace=com.tradeany.api  //设置namespace
 ```
 
 ### 订阅
