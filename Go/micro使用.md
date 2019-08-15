@@ -49,6 +49,12 @@ micro在该框架中可作为边车模型，并且可以开发plugins编译进mi
 
 > web服务名：namespace+name，gin的路径设置/name/...
 
+```
+  nebula.Web.Init(web.Name("com.tradeany.api.supplier"),)
+  router.POST("/supplier/item", CreateItem)
+  --namespace=com.tradeany.api
+```
+
 ### 订阅
 broker.Subscribe(topic, func(p broker.Event) error {    
 	// do anything    
