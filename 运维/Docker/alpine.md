@@ -45,26 +45,27 @@ Alpine Linux是体积最小的Linux发行版，它重点关注于安全和速度
 
 ### 使用alpine系统构建基础镜像
 
-####基础alpine镜像
+#### 基础alpine镜像
 
 ```
 FROM alpine:3.9.2
 
-# 更新最新镜像源列表
+//更新最新镜像源列表
 RUN apk update
 
-# 设置Docker 时间为上海时区
+//设置Docker 时间为上海时区
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/shanghai" >> /etc/timezone
 
-# 依次安装命令：curl、scp、telnet
+//依次安装命令：curl、scp、telnet
 RUN apk add curl
 RUN apk add openssh-client
 RUN apk add busybox-extras
 
-# 这里添加top命令是为了方便本地测试，防止启动该基本镜像容器后自动运行停止
+//这里添加top命令是为了方便本地测试，防止启动该基本镜像容器后自动运行停止
 ENTRYPOINT ["top"]
+
 
 ```
 
@@ -73,17 +74,20 @@ ENTRYPOINT ["top"]
 ```
 FROM java:8-alpine
 
-# 更新最新镜像源列表
+//更新最新镜像源列表
+
 RUN apk update
 
 
-# 设置Docker 时间为上海时区
+//设置Docker 时间为上海时区
+
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/shanghai" >> /etc/timezone
 
 
-# 依次安装命令：curl、scp、
+//依次安装命令：curl、scp、
+
 RUN apk add curl
 RUN apk add openssh-client
 
@@ -96,10 +100,13 @@ ENTRYPOINT ["top"]
 #### 打包curl、scp、telnet基本命令至镜像中（添加RUN命令，采用apk add 的方式添加所需的软件包）
 
 ```
-# 更新最新镜像源列表
+
+//更新最新镜像源列表
+
 RUN apk update
 
-# 依次安装命令curl、scp、telnet
+//依次安装命令curl、scp、telnet
+
 RUN apk add curl
 RUN apk add openssh-client
 RUN apk add busybox-extras
@@ -109,7 +116,9 @@ RUN apk add busybox-extras
 #### 更新为中国时区
 
 ```
-# 设置Docker 时间为上海时区
+
+//设置Docker 时间为上海时区
+
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 RUN echo "Asia/shanghai" >> /etc/timezone
