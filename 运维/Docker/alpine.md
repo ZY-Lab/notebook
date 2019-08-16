@@ -69,7 +69,7 @@ ENTRYPOINT ["top"]
 
 ```
 
-####基于Java jdk的镜像构建
+#### 基于Java jdk的镜像构建
 
 ```
 FROM java:8-alpine
