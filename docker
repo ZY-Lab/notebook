@@ -1,4 +1,4 @@
- ## 使用alpine构建基础镜像
+## 使用alpine构建基础镜像
 
 ### alpine
 Alpine Linux是体积最小的Linux发行版，它重点关注于安全和速度。使用apk能够很快地安装软件包，
