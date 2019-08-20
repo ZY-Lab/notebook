@@ -65,6 +65,14 @@ broker.Subscribe(topic, func(p broker.Event) error {
   
 broker.Queue("name") 通过句话可以设置要共享消息的队列名称
 
+//源码中的解释：
+// Queue sets the name of the queue to share messages on
+func Queue(name string) SubscribeOption {
+	return func(o *SubscribeOptions) {
+		o.Queue = name
+	}
+}
+
 ### 常用指令
 ```
 # 安装micro
