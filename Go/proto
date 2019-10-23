@@ -1,8 +1,11 @@
 ## 安装
 ### protoc安装
-去路径https://github.com/protocolbuffers/protobuf/releases 中找到相应的文件下载。
+
+   去路径https://github.com/protocolbuffers/protobuf/releases 中找到相应的文件下载。
 ### protoc-gen-micro安装
+
 > go get github.com/micro/protoc-gen-micro
 ### protoc-gen-go安装
+
 > go get -d -u github.com/golang/protobuf/protoc-gen-go
 > go install github.com/golang/protobuf/protoc-gen-go
