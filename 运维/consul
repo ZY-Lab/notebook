@@ -1,0 +1,4 @@
+##consul  key/valus备份还原
+- 1先下载consul.exe放在gopath bin下面
+- 2备份 consul kv export --http-addr=http://47.94.4.5:8500 > consul.json
+- 3还原 consul kv import --http-addr=http://47.94.4.5:8500 @consul.json
