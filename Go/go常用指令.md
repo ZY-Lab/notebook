@@ -1,18 +1,25 @@
-## go³£ÓÃÖ¸Áî
+## goå¸¸ç”¨æŒ‡ä»¤
 
-### °²×°ÒÀÀµ
+### å®‰è£…ä¾èµ–
 > go get -v -u github.com/gpmgo/gopm
-> go get -v -u golang.org/x/oauth2
 
-### ³£ÓÃÖ¸Áî
+> go get -v -u golang.org/x/oauth2
+### goæ›´æ¢å›½å†…æº
 ```
-# ÔËĞĞmain.goÎÄ¼ş
+export GOPROXY=https://goproxy.cn,direct golangæ›¿æ¢å›½æº
+
+go env -w GOPROXY=https://goproxy.cn,direct
+go env -w GOPRIVATE=*.hiqio.com,*.gitlab.com,*.gitee.com //è·³è¿‡ç§æœ‰åº“
+```
+### å¸¸ç”¨æŒ‡ä»¤
+```
+# è¿è¡Œmain.goæ–‡ä»¶
 go run main.go
-# Éú³Égo.modÎÄ¼ş
+# ç”Ÿæˆgo.modæ–‡ä»¶
 go mod init
-# ²é¿´µ±Ç°¹¤³ÌÒÀÀµ
+# æŸ¥çœ‹å½“å‰å·¥ç¨‹ä¾èµ–
 go list
-# Éú³ÉvendorÎÄ¼ş¼Ğ
+# ç”Ÿæˆvendoræ–‡ä»¶å¤¹
 go mod vendor
 
 ```
