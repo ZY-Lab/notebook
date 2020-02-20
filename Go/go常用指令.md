@@ -10,6 +10,7 @@ export GOPROXY=https://goproxy.cn,direct golang替换国源
 
 go env -w GOPROXY=https://goproxy.cn,direct
 go env -w GOPRIVATE=*.hiqio.com,*.gitlab.com,*.gitee.com //跳过私有库
+go env //查看是否修改
 ```
 ### 常用指令
 ```
